@@ -237,35 +237,44 @@
             <article data-reveal="1" data-reveal-delay="90" style="background:#FFFFFF;border:1px solid #E7E7EA;border-radius:28px;box-shadow:0 1px 2px rgba(16,17,20,.04),0 18px 44px -34px rgba(16,17,20,.4);flex:1 1 260px;min-width:0;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column">
               <div style="display:flex;align-items:center;gap:12px">
                 <span style="width:30px;height:30px;flex:0 0 30px;border-radius:11px;background:#E9EDF2;color:#16283C;display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;font-size:12.5px">05</span>
-                <h3 style="font-size:18px;font-weight:600;letter-spacing:-0.022em;color:#101114;margin:0">Know who sends you business</h3>
+                <h3 style="font-size:18px;font-weight:600;letter-spacing:-0.022em;color:#101114;margin:0">Helps you run your business</h3>
               </div>
-              <p style="font-size:15.5px;line-height:1.55;color:#4A4D55;margin:14px 0 0;text-wrap:pretty">Referral partners are worth more than clients and nobody tracks them. Sailor finds who's actually sending you deals — and which of them you've gone quiet on.</p>
-              <p style="font-size:13.5px;line-height:1.55;color:#62656C;margin:10px 0 0">The agent in Scottsdale who sent you three deals and hasn't heard from you in eight months.</p>
+              <p style="font-size:15.5px;line-height:1.55;color:#4A4D55;margin:14px 0 0;text-wrap:pretty">Ask the way you'd ask an assistant. Sailor books the time, sends the files, and writes the email — in the same thread, without you opening a single tab.</p>
+              <p style="font-size:13.5px;line-height:1.55;color:#62656C;margin:10px 0 0">Then it tells you the thing you didn't think to ask.</p>
               <div style="margin:20px 0 0;background:#F6F6F7;border-radius:20px;padding:14px 12px 16px;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end">
-                <div style="display:flex;justify-content:flex-start;margin-top:9px;margin-top:0">
+                <div data-reveal="1" data-reveal-delay="100" style="display:flex;justify-content:flex-end"><div style="max-width:88%;background:#0A84FF;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:14.5px;line-height:1.35;padding:9px 13px;border-radius:18px;border-bottom-right-radius:6px;text-wrap:pretty">throw something on the calendar with amy this week, and send her the comps for 80 geary</div></div>
+                <div data-reveal="1" data-reveal-delay="300" style="display:flex;justify-content:flex-start;margin-top:9px">
                   <div style="max-width:96%;background:#E9E9EB;border-radius:18px;border-bottom-left-radius:6px;padding:7px">
                     <div style="background:#FFFFFF;border-radius:13px;overflow:hidden">
-                      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid #F1F1F3"><span style="font-size:11.5px;font-weight:600;letter-spacing:0.02em;color:#4A4D55">Sources of business</span><span style="font-size:11.5px;font-weight:600;letter-spacing:0.02em;color:#4A4D55;white-space:nowrap">24 mo</span></div>
-                      <sc-for list="{{ referrers }}" as="r" hint-placeholder-count="3">
-                        <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid #F4F4F6">
-                          <div style="flex:1 1 90px;min-width:0">
-                            <div style="font-size:13.5px;font-weight:500;color:#101114">{{ r.name }}</div>
-                            <div style="font-size:11.5px;color:#62656C">{{ r.role }}</div>
-                          </div>
-                          <div style="text-align:right;flex:0 0 auto">
-                            <div style="font-size:12.5px;font-weight:600;color:#101114;font-variant-numeric:tabular-nums;white-space:nowrap">{{ r.deals }}</div>
-                            <div style="display:flex;align-items:center;gap:5px;justify-content:flex-end">
-                              <span style="{{ r.dot }}"></span>
-                              <span style="font-size:11.5px;color:#62656C;white-space:nowrap">{{ r.quiet }}</span>
-                            </div>
+                      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid #F1F1F3"><span style="font-size:11.5px;font-weight:600;letter-spacing:0.02em;color:#4A4D55">Done</span><span style="font-size:11.5px;font-weight:600;letter-spacing:0.02em;color:#4A4D55;white-space:nowrap">Thu</span></div>
+                      <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid #F4F4F6">
+                        <div style="flex:1 1 90px;min-width:0">
+                          <div style="font-size:13.5px;font-weight:500;color:#101114">Amy Chen</div>
+                          <div style="font-size:11.5px;color:#62656C">Coffee · Blue Bottle, Jackson</div>
+                        </div>
+                        <div style="text-align:right;flex:0 0 auto">
+                          <div style="font-size:12.5px;font-weight:600;color:#101114;font-variant-numeric:tabular-nums;white-space:nowrap">10:00 AM</div>
+                          <div style="display:flex;align-items:center;gap:5px;justify-content:flex-end">
+                            <span style="width:7px;height:7px;border-radius:50%;background:#2F8F5B;display:block"></span>
+                            <span style="font-size:11.5px;color:#62656C;white-space:nowrap">she confirmed</span>
                           </div>
                         </div>
-                      </sc-for>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid #F4F4F6">
+                        <div style="flex:1 1 90px;min-width:0">
+                          <div style="font-size:13.5px;font-weight:500;color:#101114">80 Geary comps</div>
+                          <div style="font-size:11.5px;color:#62656C">9 sales, last 6 months</div>
+                        </div>
+                        <div style="text-align:right;flex:0 0 auto">
+                          <div style="font-size:12.5px;font-weight:600;color:#101114;white-space:nowrap">Emailed</div>
+                          <div style="font-size:11.5px;color:#62656C;white-space:nowrap">PDF attached</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div data-reveal="1" data-reveal-delay="120" style="display:flex;justify-content:flex-start;margin-top:9px"><div style="max-width:82%;background:#E9E9EB;color:#000000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:14.5px;line-height:1.35;padding:9px 13px;border-radius:18px;border-bottom-left-radius:6px;text-wrap:pretty">alicia sent you 3 deals. you've gone quiet 8 months.</div></div>
-                <div data-reveal="1" data-reveal-delay="340" style="display:flex;justify-content:flex-end;margin-top:9px"><div style="max-width:82%;background:#0A84FF;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:14.5px;line-height:1.35;padding:9px 13px;border-radius:18px;border-bottom-right-radius:6px">draft her something</div></div>
+                <div data-reveal="1" data-reveal-delay="520" style="display:flex;justify-content:flex-start;margin-top:9px"><div style="max-width:82%;background:#E9E9EB;color:#000000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:14.5px;line-height:1.35;padding:9px 13px;border-radius:18px;border-bottom-left-radius:6px;text-wrap:pretty">sent the comps and put you down for 10. amy asked for jackson st, not the ferry building — that's where you met last time.</div></div>
+                <div data-reveal="1" data-reveal-delay="740" style="display:flex;justify-content:flex-start;margin-top:9px"><div style="max-width:82%;background:#E9E9EB;color:#000000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:14.5px;line-height:1.35;padding:9px 13px;border-radius:18px;border-bottom-left-radius:6px;text-wrap:pretty">one thing — amy's buyer walked from 80 geary last spring over the hoa dues. they came down 12% in january. want me to put that in the email before thursday?</div></div>
               </div>
             </article>
 
@@ -1067,11 +1076,6 @@ class Component extends DCLogic {
         { name: 'The Marcheses', last: '4 yr 2 mo', value: '$890K', dot: dot('#97A3B0') },
         { name: 'Devin Cho', last: '8 mo', value: '$410K', dot: dot('#C3CBD4') },
         { name: 'Renata Alves', last: '6 yr 1 mo', value: '$1.6M', dot: dot('#97A3B0') }
-      ],
-      referrers: [
-        { name: 'Alicia Ramos', role: 'Scottsdale agent', deals: '3 deals', quiet: 'quiet 8 mo', dot: dot('#97A3B0') },
-        { name: 'Danny Ferrell', role: 'Loan officer', deals: '2 deals', quiet: 'quiet 3 mo', dot: dot('#C3CBD4') },
-        { name: 'Nina Vasquez', role: 'Past client', deals: '2 deals', quiet: 'quiet 14 mo', dot: dot('#97A3B0') }
       ],
       orbit: this.orbitNodes(),
       orbitBox: this.orbitBox(),
