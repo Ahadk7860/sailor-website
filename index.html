@@ -101,7 +101,7 @@
                   <div style="width:38px;height:38px;border-radius:50%;background:#FFFFFF;border:1px solid #E7E7EA;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(16,17,20,.05),0 6px 14px -10px rgba(16,17,20,.45)"><img src="sailor-mark.png" alt="Sailor" style="width:21px;height:21px;object-fit:contain;display:block"></div>
                   <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:11.5px;color:#3C3C43">Sailor</div>
                 </div>
-                <div style="padding:14px 12px 18px;height:538px;display:grid">
+                <div style="padding:14px 12px 18px;height:538px;display:grid;grid-template-rows:minmax(0,1fr)">
                   <dc-import name="MessageThread" scenes="{{ heroScenes }}" hint-size="100%,538px"></dc-import>
                 </div>
               </div>
@@ -385,7 +385,6 @@
             <p style="font-size:15.5px;line-height:1.6;color:#4A4D55;margin:12px 0 0;text-wrap:pretty">One click removes everything, derived data included. Never sold, never trained on, and that's in writing.</p>
           </div>
         </div>
-        <p style="margin:22px 0 0"><a href="#security" style="font-size:15px;font-weight:600;color:#16283C;text-decoration:none;border-bottom:1px solid #C8CED5;padding-bottom:2px">Read the full architecture →</a></p>
       </div>
     </section>
 
@@ -1026,14 +1025,14 @@ class Component extends DCLogic {
           { from: 'sailor', text: 'they\'re in your compose field. read them before you send.' }
         ] },
         { label: 'Run it by text', messages: [
-          { from: 'user', text: 'book something with amy this week and send her the 80 geary comps' },
-          { from: 'sailor', text: 'comps are sent. amy\'s free thursday — booked you for 10.' },
-          { from: 'sailor', text: 'coffee on jackson st, where you two always meet.' },
+          { from: 'user', text: 'book with amy this week + send the 80 geary comps' },
+          { from: 'sailor', text: 'comps sent.' },
+          { from: 'sailor', text: 'amy\'s free thursday — booked 10am.' },
           { from: 'user', text: 'nice' },
-          { from: 'sailor', text: 'one thing — amy\'s buyer walked from 80 geary over the hoa dues.' },
-          { from: 'sailor', text: 'they came down 12% in january. want that in the email?' },
+          { from: 'sailor', text: 'her buyer walked from 80 geary over the hoa dues.' },
+          { from: 'sailor', text: 'down 12% since. want that in the email?' },
           { from: 'user', text: 'yes, add it' },
-          { from: 'sailor', text: 'added. it\'s in your drafts, unsent.' }
+          { from: 'sailor', text: 'added — in your drafts, unsent.' }
         ] }
       ],
       // card 01 / 02 demo threads
