@@ -346,16 +346,7 @@
           </sc-for>
         </div>
 
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin:30px 0 0">
-          <span style="display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#4A4D55">
-            <span style="width:11px;height:11px;border-radius:50%;background:#A9BACD;display:block"></span>Reads, on your Mac
-          </span>
-          <span style="display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#4A4D55">
-            <span style="width:11px;height:11px;border-radius:50%;background:#16283C;display:block"></span>Writes to, when you ask
-          </span>
-        </div>
-
-        <p style="font-size:14.5px;line-height:1.6;color:#62656C;margin:22px 0 0;max-width:46em">Sailor is the only tool here that can see who you actually called, and for how long. Nothing else in your stack has that.</p>
+        <p style="font-size:14.5px;line-height:1.6;color:#62656C;margin:30px 0 0;max-width:46em">Sailor is the only tool here that can see who you actually called, and for how long. Nothing else in your stack has that.</p>
       </div>
     </section>
 
@@ -844,20 +835,19 @@ class Component extends DCLogic {
   }
 
   orbitData() {
-    return {
-      writes: [
-        { icon: 'icons/gmail.svg', name: 'Gmail' },
-        { icon: 'icons/google-calendar.svg', name: 'Google Calendar' },
-        { icon: 'icons/outlook.svg', name: 'Outlook' },
-        { icon: 'icons/google-drive.svg', name: 'Drive' },
-        { icon: 'icons/notion.svg', name: 'Notion' }
-      ],
-      reads: [
-        { icon: 'icons/imessage.svg', name: 'iMessage' }, { icon: 'icons/sms.svg', name: 'SMS' },
-        { icon: 'icons/calls.svg', name: 'Calls' }, { icon: 'icons/contacts.svg', name: 'Contacts' },
-        { icon: 'icons/calendar.svg', name: 'Calendar' }, { icon: 'icons/mail.svg', name: 'Mail' }
-      ]
-    };
+    // One flat list — no read/write split, and one entry per thing. Generic
+    // 'Mail' and 'Calendar' are gone: Gmail/Outlook and Google Calendar cover them.
+    return [
+      { icon: 'icons/imessage.svg', name: 'iMessage' },
+      { icon: 'icons/gmail.svg', name: 'Gmail' },
+      { icon: 'icons/google-calendar.svg', name: 'Google Calendar' },
+      { icon: 'icons/outlook.svg', name: 'Outlook' },
+      { icon: 'icons/google-drive.svg', name: 'Drive' },
+      { icon: 'icons/notion.svg', name: 'Notion' },
+      { icon: 'icons/contacts.svg', name: 'Contacts' },
+      { icon: 'icons/calls.svg', name: 'Calls' },
+      { icon: 'icons/sms.svg', name: 'SMS' }
+    ];
   }
 
   orbitMetrics() {
@@ -903,13 +893,10 @@ class Component extends DCLogic {
 
   orbitNodes() {
     const { size, radius, showLabel } = this.orbitMetrics();
-    const d = this.orbitData();
-    const nodes = d.writes.map(n => Object.assign({ kind: 'write' }, n))
-      .concat(d.reads.map(n => Object.assign({ kind: 'read' }, n)));
+    const nodes = this.orbitData();
     const step = 360 / nodes.length;
     return nodes.map((n, i) => {
       const rad = (-90 + i * step) * Math.PI / 180;
-      const read = n.kind === 'read';
       return {
         icon: n.icon,
         name: n.name,
@@ -928,16 +915,15 @@ class Component extends DCLogic {
         tile: {
           width: size + 'px', height: size + 'px', flex: '0 0 ' + size + 'px',
           borderRadius: Math.round(size * 0.29) + 'px',
-          background: read ? '#E9EDF2' : '#FFFFFF',
-          border: '1px solid ' + (read ? '#D6DEE8' : '#E0E0E4'),
+          background: '#FFFFFF',
+          border: '1px solid #E0E0E4',
           color: '#16283C',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 1px 2px rgba(16,17,20,.05),0 12px 26px -18px rgba(16,17,20,.5)'
         },
         glyph: {
           width: Math.round(size * 0.46) + 'px', height: Math.round(size * 0.46) + 'px',
-          objectFit: 'contain', display: 'block',
-          opacity: read ? 0.72 : 1
+          objectFit: 'contain', display: 'block'
         },
         label: { fontSize: '10.5px', color: '#62656C', whiteSpace: 'nowrap', textAlign: 'center', lineHeight: 1.2 }
       };
@@ -972,7 +958,7 @@ class Component extends DCLogic {
       ['Will it text my clients for me?', 'Never. Sailor writes; you read, edit, and send. That\'s a permanent product rule, not a setting — it\'s why the messages still sound like you.'],
       ['Do I need a Mac?', 'Yes. Your iMessage history only exists on a Mac, so Sailor needs one to read from.'],
       ['What if my Mac is closed?', 'Sailor syncs whenever it wakes and always tells you how fresh the data is. Leave it awake and it stays current.'],
-      ['Does it work with the tools I already use?', 'It reads iMessage, SMS, calls, contacts, calendar, and mail on your Mac, and writes to Gmail, Google Calendar, Outlook, Drive, and Notion when you ask. Sailor doesn\'t replace what you already run on. It fills it in.'],
+      ['Does it work with the tools I already use?', 'It connects to iMessage, SMS, calls, and contacts on your Mac, plus Gmail, Google Calendar, Outlook, Drive, and Notion. Sailor doesn\'t replace what you already run on. It fills it in.'],
       ['How far back can it see?', 'Up to your Messages retention setting. Most people are capped at one year and don\'t know it. Sailor checks during setup and tells you how to change it.'],
       ['Is this legal?', 'Sailor reads a file on your own computer, which you already own, with your permission. It never sends unsolicited messages — that\'s what TCPA governs.'],
       ['What happens if I cancel?', 'One click deletes everything, derived data included. Never sold, never trained on.']
