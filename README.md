@@ -27,4 +27,19 @@ Edit `index.html` directly; there is nothing to compile. The `window.__resources
 
 ## Deploy
 
-Pushing to `main` publishes. GitHub Pages serves from the repo root; `CNAME` holds the custom domain and `.nojekyll` stops Jekyll from touching the files.
+Pushing to `main` publishes. GitHub Pages serves from the repo root; `.nojekyll` stops Jekyll from touching the files.
+
+Live now: **https://ahadk7860.github.io/sailor-website/**
+
+## Cutting over meetsailor.com
+
+The domain currently resolves to Vercel (`216.150.1.1`, `www` → `vercel-dns`), which serves a different site. Until DNS moves, GitHub Pages cannot serve the domain — so no `CNAME` file is committed. To cut over:
+
+1. At the DNS provider for `meetsailor.com`, replace the apex `A` records with the four GitHub Pages addresses:
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   and point `www` at `CNAME ahadk7860.github.io`.
+2. Remove the domain from the old Vercel project first, or Vercel will keep claiming it.
+3. Set the custom domain in this repo (Settings → Pages), which recommits `CNAME`.
+4. Wait for the certificate, then enable **Enforce HTTPS**.
+
+Alternative: the domain is already on Vercel, so importing this repo as a Vercel project (framework preset "Other", no build command, output = repo root) avoids the DNS change entirely.
