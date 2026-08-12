@@ -233,7 +233,7 @@
             <article data-reveal="1" data-reveal-delay="90" style="background:#FFFFFF;border:1px solid #E7E7EA;border-radius:28px;box-shadow:0 1px 2px rgba(16,17,20,.04),0 18px 44px -34px rgba(16,17,20,.4);flex:1 1 260px;min-width:0;padding:clamp(22px,2.4vw,28px);display:flex;flex-direction:column">
               <div style="display:flex;align-items:center;gap:12px">
                 <span style="width:30px;height:30px;flex:0 0 30px;border-radius:11px;background:#E9EDF2;color:#16283C;display:flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;font-size:12.5px">05</span>
-                <h3 style="font-size:18px;font-weight:600;letter-spacing:-0.022em;color:#101114;margin:0">Run your business from your phone</h3>
+                <h3 style="font-size:18px;font-weight:600;letter-spacing:-0.022em;color:#101114;margin:0">Run your business by text</h3>
               </div>
               <p style="font-size:15.5px;line-height:1.55;color:#4A4D55;margin:14px 0 0;text-wrap:pretty">Ask like you'd ask an assistant. It books the time, sends the file, writes the email.</p>
               <div style="margin:20px 0 0;background:#F6F6F7;border-radius:20px;padding:14px 12px 16px;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end">
@@ -334,8 +334,8 @@
     <section id="integrations" style="scroll-margin-top:32px;padding:clamp(48px,6vw,80px) clamp(16px,4vw,32px)">
       <div data-reveal="1" style="max-width:1180px;margin:0 auto;background:#FFFFFF;border:1px solid #E7E7EA;border-radius:36px;padding:clamp(32px,5vw,64px) clamp(20px,4vw,56px);box-shadow:0 1px 2px rgba(16,17,20,.04),0 24px 60px -40px rgba(16,17,20,.35)">
         <div data-reveal="1" style="max-width:34em">
-          <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-0.032em;font-weight:600;color:#101114;margin:0">It reads what you already use.</h2>
-          <p style="font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#4A4D55;margin:18px 0 0;text-wrap:pretty">Sailor works from the tools your business already runs on, and it never sends anything on your behalf. The point isn't another app to check. It's never opening one to find out who you forgot.</p>
+          <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-0.032em;font-weight:600;color:#101114;margin:0">Runs on what you already use.</h2>
+          <p style="font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#4A4D55;margin:18px 0 0;text-wrap:pretty">Text Sailor what you need — book the meeting, send the file, write the follow-up — and it happens in the apps above. Client messages are the one exception: it drafts, you press send.</p>
         </div>
 
         <div style="{{ orbitBox }}">
@@ -569,7 +569,7 @@
       <div style="max-width:820px;margin:0 auto">
         <h2 data-reveal="1" style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-0.032em;font-weight:600;color:#101114;margin:0 0 clamp(24px,3vw,36px)">A few practical details.</h2>
         <div data-reveal="1" style="display:flex;flex-direction:column;gap:10px">
-          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="9">
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="8">
             <div style="{{ f.card }}">
               <button onClick="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;padding:20px clamp(18px,2.4vw,26px);min-height:44px;cursor:pointer;font-size:16.5px;font-weight:600;letter-spacing:-0.015em;color:#101114;line-height:1.4">
                 <span>{{ f.q }}</span>
@@ -994,7 +994,6 @@ class Component extends DCLogic {
       ['What if my Mac is closed?', 'Sailor syncs whenever it wakes and always tells you how fresh the data is. Leave it awake and it stays current.'],
       ['Does it work with the tools I already use?', 'It connects to iMessage, SMS, calls, and contacts on your Mac, plus Gmail, Google Calendar, Outlook, Drive, and Notion. Sailor doesn\'t replace what you already run on. It fills it in.'],
       ['How far back can it see?', 'Up to your Messages retention setting. Most people are capped at one year and don\'t know it. Sailor checks during setup and tells you how to change it.'],
-      ['Is this legal?', 'Sailor reads a file on your own computer, which you already own, with your permission. It never sends unsolicited messages — that\'s what TCPA governs.'],
       ['What happens if I cancel?', 'One click deletes everything, derived data included. Never sold, never trained on.']
     ];
 
