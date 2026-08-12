@@ -27,19 +27,20 @@ Edit `index.html` directly; there is nothing to compile. The `window.__resources
 
 ## Deploy
 
-Pushing to `main` publishes. GitHub Pages serves from the repo root; `.nojekyll` stops Jekyll from touching the files.
+**Production: https://meetsailor.com** — served by Vercel, project `sailor-website`.
 
-Live now: **https://ahadk7860.github.io/sailor-website/**
+Deploy from this directory:
 
-## Cutting over meetsailor.com
+```
+npx vercel deploy --prod
+```
 
-The domain currently resolves to Vercel (`216.150.1.1`, `www` → `vercel-dns`), which serves a different site. Until DNS moves, GitHub Pages cannot serve the domain — so no `CNAME` file is committed. To cut over:
+`vercel.json` overrides the project's Next.js framework preset: no build step, repo root served as-is. Leave `cleanUrls` off — it rewrites `/MessageThread.dc.html`, which the runtime fetches by exact path.
 
-1. At the DNS provider for `meetsailor.com`, replace the apex `A` records with the four GitHub Pages addresses:
-   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   and point `www` at `CNAME ahadk7860.github.io`.
-2. Remove the domain from the old Vercel project first, or Vercel will keep claiming it.
-3. Set the custom domain in this repo (Settings → Pages), which recommits `CNAME`.
-4. Wait for the certificate, then enable **Enforce HTTPS**.
+Only the custom domain is public; `*.vercel.app` deployment URLs sit behind Vercel Authentication, so preview deployments need a logged-in browser to view.
 
-Alternative: the domain is already on Vercel, so importing this repo as a Vercel project (framework preset "Other", no build command, output = repo root) avoids the DNS change entirely.
+To roll back, use Instant Rollback in the Vercel dashboard — every prior production deployment is still there.
+
+### GitHub Pages (secondary)
+
+Also published at https://ahadk7860.github.io/sailor-website/ from `main`. `.nojekyll` stops Jekyll from touching the files. There is deliberately no `CNAME` — the domain is served by Vercel, and a `CNAME` here would only make the Pages URL redirect away.
