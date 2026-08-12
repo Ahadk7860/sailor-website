@@ -86,7 +86,7 @@
           <h1 style="font-size:clamp(42px,5.6vw,68px);line-height:1;letter-spacing:-0.042em;font-weight:600;color:#101114;margin:26px 0 0;text-wrap:balance">Your iMessage,<br /><span style="color:#5836E6">organized.</span></h1>
           <p style="font-size:clamp(17px,1.4vw,19px);line-height:1.6;color:#4A4D55;max-width:32em;margin:26px 0 0;text-wrap:pretty">Sailor reads your texts on your Mac. Before a meeting, it tells you what you promised. Every morning, it tells you who's waiting. And it remembers the client you closed in 2019 — even when you don't.</p>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:32px 0 0">
-            <a href="https://cal.com/sailor-chat/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 28px;border-radius:999px;background:#16283C;color:#F7F7F8;font-size:15px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;box-shadow:0 14px 30px -18px rgba(22,40,60,.9);transition:transform 160ms ease-out,box-shadow 160ms ease-out" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -18px rgba(22,40,60,.95)">Book a 15-minute demo</a>
+            <a href="https://cal.com/sailor-chat/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 28px;border-radius:999px;background:#16283C;color:#F7F7F8;font-size:15px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;box-shadow:0 14px 30px -18px rgba(22,40,60,.9);transition:transform 160ms ease-out,box-shadow 160ms ease-out" style-hover="transform:translateY(-2px);box-shadow:0 18px 36px -18px rgba(22,40,60,.95)">Book a demo</a>
             <a href="#roi" style="display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 24px;border-radius:999px;background:#FFFFFF;border:1px solid #E7E7EA;color:#16283C;font-size:15px;font-weight:600;text-decoration:none;box-shadow:0 1px 2px rgba(16,17,20,.04);transition:transform 160ms ease-out,box-shadow 160ms ease-out" style-hover="transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(16,17,20,.5)">See what it finds in your book</a>
           </div>
           <p style="font-size:13.5px;line-height:1.55;color:#62656C;margin:20px 0 0;max-width:30em">Runs on your Mac. Your messages never leave it. Sailor never sends anything without you.</p>
@@ -1025,14 +1025,14 @@ class Component extends DCLogic {
           { from: 'sailor', text: 'they\'re in your compose field. read them before you send.' }
         ] },
         { label: 'Run it by text', messages: [
-          { from: 'user', text: 'book with amy this week + send the 80 geary comps' },
-          { from: 'sailor', text: 'comps sent.' },
-          { from: 'sailor', text: 'amy\'s free thursday — booked 10am.' },
+          { from: 'user', text: 'book something with amy this week and send her the 80 geary comps' },
+          { from: 'sailor', text: 'comps are sent. amy\'s free thursday — booked you for 10.' },
+          { from: 'sailor', text: 'coffee on jackson st, where you two always meet.' },
           { from: 'user', text: 'nice' },
-          { from: 'sailor', text: 'her buyer walked from 80 geary over the hoa dues.' },
-          { from: 'sailor', text: 'down 12% since. want that in the email?' },
+          { from: 'sailor', text: 'one thing — amy\'s buyer walked from 80 geary over the hoa dues.' },
+          { from: 'sailor', text: 'they came down 12% in january. want that in the email?' },
           { from: 'user', text: 'yes, add it' },
-          { from: 'sailor', text: 'added — in your drafts, unsent.' }
+          { from: 'sailor', text: 'added and sent!' }
         ] }
       ],
       // card 01 / 02 demo threads
