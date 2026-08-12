@@ -271,7 +271,7 @@
                 <h3 style="font-size:18px;font-weight:600;letter-spacing:-0.022em;color:#101114;margin:0">Show me it worked</h3>
               </div>
               <p style="font-size:15.5px;line-height:1.55;color:#4A4D55;margin:14px 0 0;text-wrap:pretty">Every Friday: how many Sailor surfaced, how many you contacted, how many replied, what closed. If it isn't making you money you'll know in a week.</p>
-              <p style="font-size:13.5px;line-height:1.55;color:#62656C;margin:10px 0 0">Exports to Follow Up Boss, kvCORE, VinSolutions, and Salesforce.</p>
+              <p style="font-size:13.5px;line-height:1.55;color:#62656C;margin:10px 0 0">Exports to Gmail, Google Calendar, Outlook, Drive, and Notion.</p>
               <div style="margin:20px 0 0;background:#F6F6F7;border-radius:20px;padding:20px;flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between">
                 <div style="display:flex;flex-direction:column;justify-content:space-between;gap:16px;flex:1 1 auto">
                   <div>
@@ -338,9 +338,9 @@
           </div>
           <sc-for list="{{ orbit }}" as="o" hint-placeholder-count="13">
             <div style="{{ o.wrap }}">
-              <span style="{{ o.tile }}">{{ o.mark }}</span>
+              <span style="{{ o.tile }}"><img src="{{ o.icon }}" alt="{{ o.name }}" style="{{ o.glyph }}"></span>
               <sc-if value="{{ o.showLabel }}" hint-placeholder-val="{{ true }}">
-                <span style="{{ o.label }}">{{ o.name }}</span>
+                <span style="{{ o.label }}" aria-hidden="true">{{ o.name }}</span>
               </sc-if>
             </div>
           </sc-for>
@@ -846,13 +846,16 @@ class Component extends DCLogic {
   orbitData() {
     return {
       writes: [
-        { mark: 'FUB', name: 'Follow Up Boss' }, { mark: 'kv', name: 'kvCORE' }, { mark: 'Vin', name: 'VinSolutions' },
-        { mark: 'DS', name: 'DealerSocket' }, { mark: 'SF', name: 'Salesforce' }, { mark: 'HS', name: 'HubSpot' },
-        { mark: 'Sh', name: 'Sheets' }
+        { icon: 'icons/gmail.svg', name: 'Gmail' },
+        { icon: 'icons/google-calendar.svg', name: 'Google Calendar' },
+        { icon: 'icons/outlook.svg', name: 'Outlook' },
+        { icon: 'icons/google-drive.svg', name: 'Drive' },
+        { icon: 'icons/notion.svg', name: 'Notion' }
       ],
       reads: [
-        { mark: 'iM', name: 'iMessage' }, { mark: 'SMS', name: 'SMS' }, { mark: 'Call', name: 'Calls' },
-        { mark: 'Con', name: 'Contacts' }, { mark: 'Cal', name: 'Calendar' }, { mark: 'Mail', name: 'Email' }
+        { icon: 'icons/imessage.svg', name: 'iMessage' }, { icon: 'icons/sms.svg', name: 'SMS' },
+        { icon: 'icons/calls.svg', name: 'Calls' }, { icon: 'icons/contacts.svg', name: 'Contacts' },
+        { icon: 'icons/calendar.svg', name: 'Calendar' }, { icon: 'icons/mail.svg', name: 'Mail' }
       ]
     };
   }
@@ -908,7 +911,7 @@ class Component extends DCLogic {
       const rad = (-90 + i * step) * Math.PI / 180;
       const read = n.kind === 'read';
       return {
-        mark: n.mark,
+        icon: n.icon,
         name: n.name,
         showLabel,
         wrap: {
@@ -929,8 +932,12 @@ class Component extends DCLogic {
           border: '1px solid ' + (read ? '#D6DEE8' : '#E0E0E4'),
           color: '#16283C',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: size > 48 ? '13px' : '11px', fontWeight: 600, letterSpacing: '-0.01em',
           boxShadow: '0 1px 2px rgba(16,17,20,.05),0 12px 26px -18px rgba(16,17,20,.5)'
+        },
+        glyph: {
+          width: Math.round(size * 0.46) + 'px', height: Math.round(size * 0.46) + 'px',
+          objectFit: 'contain', display: 'block',
+          opacity: read ? 0.72 : 1
         },
         label: { fontSize: '10.5px', color: '#62656C', whiteSpace: 'nowrap', textAlign: 'center', lineHeight: 1.2 }
       };
@@ -965,7 +972,7 @@ class Component extends DCLogic {
       ['Will it text my clients for me?', 'Never. Sailor writes; you read, edit, and send. That\'s a permanent product rule, not a setting — it\'s why the messages still sound like you.'],
       ['Do I need a Mac?', 'Yes. Your iMessage history only exists on a Mac, so Sailor needs one to read from.'],
       ['What if my Mac is closed?', 'Sailor syncs whenever it wakes and always tells you how fresh the data is. Leave it awake and it stays current.'],
-      ['Does it work with my CRM?', 'It exports to Follow Up Boss, kvCORE, VinSolutions, DealerSocket, and Salesforce. Sailor doesn\'t replace your CRM. It fills it in.'],
+      ['Does it work with the tools I already use?', 'It reads iMessage, SMS, calls, contacts, calendar, and mail on your Mac, and writes to Gmail, Google Calendar, Outlook, Drive, and Notion when you ask. Sailor doesn\'t replace what you already run on. It fills it in.'],
       ['How far back can it see?', 'Up to your Messages retention setting. Most people are capped at one year and don\'t know it. Sailor checks during setup and tells you how to change it.'],
       ['Is this legal?', 'Sailor reads a file on your own computer, which you already own, with your permission. It never sends unsolicited messages — that\'s what TCPA governs.'],
       ['What happens if I cancel?', 'One click deletes everything, derived data included. Never sold, never trained on.']
