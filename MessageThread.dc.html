@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @keyframes scDot { 0%, 60%, 100% { opacity: .28 } 30% { opacity: 1 } }
+    @keyframes scPop { from { opacity: 0; transform: translateY(10px) scale(.98) } to { opacity: 1; transform: none } }
+  </style>
+</helmet>
+
+<sc-if value="{{ isPlayer }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ rootRef }}" style="display:flex;flex-direction:column;width:100%;height:100%;min-height:0">
+    <div style="{{ stageStyle }}">
+      <sc-for list="{{ items }}" as="m" hint-placeholder-count="0">
+        <div style="{{ m.wrap }}">
+          <sc-if value="{{ m.isSailor }}" hint-placeholder-val="{{ true }}">
+            <div style="max-width:78%;background:#E9E9EB;color:#000000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.35;padding:9px 14px;border-radius:19px;border-bottom-left-radius:6px;white-space:pre-line;text-wrap:pretty">{{ m.text }}</div>
+          </sc-if>
+          <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+            <div style="max-width:78%;background:#0A84FF;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.35;padding:9px 14px;border-radius:19px;border-bottom-right-radius:6px;white-space:pre-line;text-wrap:pretty">{{ m.text }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:flex-start;margin-top:9px;animation:scPop 260ms cubic-bezier(.16,1,.3,1) both">
+          <div style="background:#E9E9EB;border-radius:19px;border-bottom-left-radius:6px;padding:12px 15px;display:flex;gap:5px;align-items:center">
+            <span style="width:7px;height:7px;border-radius:50%;background:#8E8E93;display:block;animation:scDot 1.4s infinite ease-in-out"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#8E8E93;display:block;animation:scDot 1.4s infinite ease-in-out .2s"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#8E8E93;display:block;animation:scDot 1.4s infinite ease-in-out .4s"></span>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:6px;padding:14px 0 2px;flex:0 0 auto">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="3">
+        <span style="{{ d.style }}"></span>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isStatic }}" hint-placeholder-val="{{ true }}">
+  <div ref="{{ rootRef }}" style="display:flex;flex-direction:column;width:100%">
+    <sc-for list="{{ items }}" as="m" hint-placeholder-count="4">
+      <div style="{{ m.wrap }}">
+        <sc-if value="{{ m.isSailor }}" hint-placeholder-val="{{ true }}">
+          <div style="max-width:78%;background:#E9E9EB;color:#000000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.35;padding:9px 14px;border-radius:19px;border-bottom-left-radius:6px;white-space:pre-line;text-wrap:pretty">{{ m.text }}</div>
+        </sc-if>
+        <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+          <div style="max-width:78%;background:#0A84FF;color:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:15px;line-height:1.35;padding:9px 14px;border-radius:19px;border-bottom-right-radius:6px;white-space:pre-line;text-wrap:pretty">{{ m.text }}</div>
+        </sc-if>
+        <sc-if value="{{ m.isTime }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#8E8E93;padding:12px 0 6px">{{ m.text }}</div>
+        </sc-if>
+        <sc-if value="{{ m.isTyping }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#E9E9EB;border-radius:19px;border-bottom-left-radius:6px;padding:12px 15px;display:flex;gap:5px;align-items:center">
+            <span style="width:7px;height:7px;border-radius:50%;background:#8E8E93;display:block;animation:scDot 1.4s infinite ease-in-out"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#8E8E93;display:block;animation:scDot 1.4s infinite ease-in-out .2s"></span>
+            <span style="width:7px;height:7px;border-radius:50%;background:#8E8E93;display:block;animation:scDot 1.4s infinite ease-in-out .4s"></span>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:380,&quot;height&quot;:340},&quot;messages&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{from:'user'|'sailor'|'time'|'typing',text?:string}[]&quot;},&quot;scenes&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{label?:string,messages:{from:'user'|'sailor',text:string}[]}[]&quot;},&quot;stagger&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:250,&quot;min&quot;:0,&quot;max&quot;:600,&quot;step&quot;:25,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;holdMs&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:2600,&quot;min&quot;:800,&quot;max&quot;:6000,&quot;step&quot;:200,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  timers = [];
+  state = { shown: false, scene: 0, count: 0, typing: false, phase: 'in' };
+
+  scenes() {
+    const s = this.props.scenes;
+    return Array.isArray(s) && s.length ? s : null;
+  }
+
+  componentDidMount() {
+    this.reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const el = this.rootRef.current;
+    const start = () => {
+      const sc = this.scenes();
+      if (!sc) { this.setState({ shown: true }); return; }
+      if (this.reduced) { this.setState({ shown: true, count: sc[0].messages.length }); return; }
+      this.setState({ shown: true });
+      this.play(0);
+    };
+    if (!el || !('IntersectionObserver' in window)) { start(); return; }
+    // already in view, or already scrolled past (deep link / jump scroll)
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) { this.started = true; start(); return; }
+    this.obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !this.started) { this.started = true; start(); this.obs.disconnect(); }
+      });
+    }, { threshold: 0.18 });
+    this.obs.observe(el);
+  }
+
+  componentWillUnmount() {
+    if (this.obs) this.obs.disconnect();
+    this.clear();
+  }
+
+  clear() { this.timers.forEach(clearTimeout); this.timers = []; }
+
+  play(idx) {
+    const scenes = this.scenes();
+    if (!scenes) return;
+    const scene = scenes[idx % scenes.length];
+    if (!scene) return;
+    this.clear();
+    this.setState({ scene: idx % scenes.length, count: 0, typing: false, phase: 'in' });
+
+    const steps = [];
+    (scene.messages || []).forEach((m, i) => {
+      if (m.from === 'sailor') {
+        steps.push({ typing: true, dur: Math.min(1050, 460 + String(m.text || '').length * 6) });
+      }
+      steps.push({ show: i + 1, dur: m.from === 'user' ? 560 : 420 });
+    });
+
+    let t = 420;
+    steps.forEach((st) => {
+      const at = t;
+      this.timers.push(setTimeout(() => {
+        if (st.typing) this.setState({ typing: true });
+        else this.setState({ typing: false, count: st.show });
+      }, at));
+      t += st.dur;
+    });
+
+    this.timers.push(setTimeout(() => {
+      this.setState({ phase: 'out' });
+      this.timers.push(setTimeout(() => this.play(idx + 1), 420));
+    }, t + (this.props.holdMs ?? 2600)));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const scenes = this.scenes();
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+
+    if (scenes) {
+      const scene = scenes[s.scene] || scenes[0];
+      const msgs = (scene.messages || []).slice(0, s.count);
+      const items = msgs.map((m, i) => {
+        const prev = (scene.messages || [])[i - 1];
+        const gap = i === 0 ? 0 : (prev && prev.from === m.from ? 3 : 9);
+        return {
+          text: m.text,
+          isTime: false,
+          isUser: m.from === 'user',
+          isSailor: m.from === 'sailor',
+          isTyping: false,
+          wrap: {
+            display: 'flex',
+            justifyContent: m.from === 'user' ? 'flex-end' : 'flex-start',
+            marginTop: gap + 'px',
+            animation: this.reduced ? 'none' : 'scPop 340ms ' + ease + ' both'
+          }
+        };
+      });
+      return {
+        rootRef: this.rootRef,
+        isPlayer: true,
+        isStatic: false,
+        items,
+        typing: s.typing && !this.reduced,
+        stageStyle: {
+          flex: '1 1 auto',
+          minHeight: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          overflow: 'hidden',
+          opacity: s.phase === 'out' ? 0 : 1,
+          transform: s.phase === 'out' ? 'translateY(-6px)' : 'none',
+          transition: this.reduced ? 'none' : 'opacity 380ms ' + ease + ', transform 380ms ' + ease
+        },
+        dots: scenes.map((_, i) => ({
+          style: {
+            display: 'block',
+            height: '5px',
+            borderRadius: '999px',
+            width: i === s.scene ? '18px' : '5px',
+            background: i === s.scene ? '#16283C' : '#C9CBD1',
+            transition: 'width 340ms ' + ease + ', background 340ms ease'
+          }
+        }))
+      };
+    }
+
+    const msgs = this.props.messages || [];
+    const stagger = this.props.stagger ?? 250;
+    const shown = s.shown;
+    let n = 0;
+    const items = msgs.map((m, i) => {
+      const isTime = m.from === 'time';
+      const delay = isTime ? Math.max(0, (n - 1) * stagger) : (n++) * stagger;
+      const prev = msgs[i - 1];
+      const gap = i === 0 ? 0 : (prev && prev.from === m.from ? 3 : 9);
+      return {
+        text: m.text,
+        isTime,
+        isUser: m.from === 'user',
+        isSailor: m.from === 'sailor',
+        isTyping: m.from === 'typing',
+        wrap: {
+          display: 'flex',
+          justifyContent: m.from === 'user' ? 'flex-end' : (isTime ? 'center' : 'flex-start'),
+          marginTop: gap + 'px',
+          opacity: shown ? 1 : 0,
+          transform: shown ? 'none' : 'translateY(8px)',
+          transition: 'opacity 420ms ' + ease + ' ' + delay + 'ms, transform 420ms ' + ease + ' ' + delay + 'ms'
+        }
+      };
+    });
+    return { rootRef: this.rootRef, isPlayer: false, isStatic: true, items, typing: false, stageStyle: {}, dots: [] };
+  }
+}
+</script>
+</body>
+</html>
